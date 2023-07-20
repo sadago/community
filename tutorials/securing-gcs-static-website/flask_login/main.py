@@ -118,7 +118,7 @@ def get_secret(secret_id, version_id="latest"):
     name = sm_client.secret_version_path(project_id, secret_id, version_id)
 
     # Access the secret version.
-    response = sm_client.access_secret_version(name)
+    response = sm_client.access_secret_version(request={"name": name})
 
     payload = response.payload.data.decode('UTF-8').rstrip()
     return payload
